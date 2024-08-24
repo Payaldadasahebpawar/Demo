@@ -17,6 +17,8 @@ class RegisterView(APIView):
             return Response({"message": "User registered successfully"}, status=status.HTTP_201_CREATED)
         else:
             # Handle the deletion of the name if validation fails
+            
+            # DELETE FROM CUSTOMERS WHERE AGE = 25 COMMIT;    
             if 'name' in request.data:
                 name_data = request.data['name']
                 Name.objects.filter(first_name=name_data.get('first_name'), last_name=name_data.get('last_name')).delete()
